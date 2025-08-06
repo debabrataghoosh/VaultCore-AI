@@ -36,8 +36,8 @@ VaultCore is a comprehensive blockchain security platform that provides trust sc
 
 ## 🚀 Live Demo
 
-**Production URL:** https://vault-core-438c01m5i-debabrata-ghoshs-projects.vercel.app
-
+**Production URL:** 
+https://vault-core.vercel.app/
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 15.4.5 with App Router
