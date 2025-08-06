@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Shield, Search, BarChart3, CreditCard, Building2 } from "lucide-react"
+import { Shield, Search, BarChart3, CreditCard, Building2, Star } from "lucide-react"
 import Link from "next/link"
 
 export function Header() {
@@ -23,7 +23,7 @@ export function Header() {
               className="transition-colors hover:text-foreground/80"
             >
               <Search className="h-4 w-4 mr-2 inline" />
-              Scan Address
+              Universal Scanner
             </Link>
             <Link
               href="/analytics"
@@ -45,6 +45,13 @@ export function Header() {
             >
               <Building2 className="h-4 w-4 mr-2 inline" />
               Enterprise
+            </Link>
+            <Link
+              href="/vaultscore"
+              className="transition-colors hover:text-foreground/80"
+            >
+              <Star className="h-4 w-4 mr-2 inline" />
+              VaultScore
             </Link>
           </nav>
           <div className="flex items-center space-x-2">
