@@ -35,16 +35,22 @@ export function getRiskLevel(score: number): string {
   return "Low Risk"
 }
 
-export function calculateTrustScore(data: any): number {
-  // Mock trust score calculation
-  let score = 100
-  
-  // Reduce score based on various factors
-  if (data.suspiciousTransactions > 10) score -= 30
-  if (data.contractVerified === false) score -= 25
-  if (data.liquidityLocked === false) score -= 20
-  if (data.holderCount < 100) score -= 15
-  if (data.rugPullRisk > 0.7) score -= 40
-  
-  return Math.max(0, score)
-} 
+
+// Unified Etherscan V2 API for multichain support
+export async function fetchEvmAddressBalance(address: string, chainId: number): Promise<string> {
+  const apiKey = process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY;
+  const apiUrl = process.env.NEXT_PUBLIC_ETHERSCAN_API_URL;
+  const url = `${apiUrl}?chainid=${chainId}&module=account&action=balance&address=${address}&tag=latest&apikey=${apiKey}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.result; // balance in wei
+}
+
+export async function fetchEvmAddressTransactions(address: string, chainId: number): Promise<any[]> {
+  const apiKey = process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY;
+  const apiUrl = process.env.NEXT_PUBLIC_ETHERSCAN_API_URL;
+  const url = `${apiUrl}?chainid=${chainId}&module=account&action=txlist&address=${address}&sort=desc&apikey=${apiKey}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.result; // array of transactions
+}

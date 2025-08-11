@@ -5,6 +5,7 @@ import { Shield, Search, BarChart3, CreditCard, Building2, Star } from "lucide-r
 import Link from "next/link"
 
 export function Header() {
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -55,15 +56,15 @@ export function Header() {
             </Link>
           </nav>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm">
-              Sign In
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/scan">Try Scanner</Link>
             </Button>
-            <Button variant="security" size="sm">
-              Get Started
+            <Button variant="security" size="sm" asChild>
+              <Link href="/scan">Scan Now</Link>
             </Button>
           </div>
         </div>
       </div>
     </header>
-  )
-} 
+  );
+}
